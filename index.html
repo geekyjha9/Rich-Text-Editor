@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Rich Text Editor</title>
+</head>
+<body>
+    <h1>Rich Text Editor</h1>
+    <div class="toolbar">
+        <button id="bold">Bold</button>
+        <button id="italic">Italic</button>
+        <button id="underline">Underline</button>
+        <input type="file" id="image-upload" accept="image/*">
+        <button id="undo">Undo</button>
+        <button id="redo">Redo</button>
+        <button id="save">Save</button>
+        <a id="download" download="document.html">Download</a>
+    </div>
+    <div class="editor" contenteditable="true" id="editor"></div>
+
+    <script src="editor.js"></script>
+</body>
+</html>
