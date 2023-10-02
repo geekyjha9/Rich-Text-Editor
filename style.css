@@ -43,7 +43,7 @@ body {
     margin-left: 10px;
 }
 
-#bold, #italic, #underline, #align-left, #align-center, #align-right, #align-justify {
+#bold, #italic, #underline, #align-left, #align-center, #align-right, #align-justify, #undo, #redo {
     background-color: transparent;
     border: none;
 }
