@@ -8,6 +8,10 @@ body {
     margin-top: 4vw;
 }
 
+h1 {
+    font-size: 2vw;
+}
+
 .toolbar {
     background-color: #fff;
     padding: 10px;
