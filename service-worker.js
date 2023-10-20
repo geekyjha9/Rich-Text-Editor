@@ -4,7 +4,11 @@ const cachedFiles = ['/', 'editor.js', 'style.css', 'manifest.json', 'icon.png']
 self.addEventListener('install', (e) => {
     e.waitUntil(
         caches.open(cacheName).then((cache) => {
-            return cache.addAll(cachedFiles);
+            return cache.addAll([
+                '/index.html',
+                '/style.css',
+                '/editor.js',
+              ]);
         })
     );
 });
