@@ -15,6 +15,7 @@ body {
     display: flex;
     align-items: center;
     width: 60%;
+    overflow: scroll;
 }
 
 .toolbar button, .toolbar input[type="file"] {
@@ -68,5 +69,5 @@ body {
 
 * {
     border: 2px solid red;
-    background-color: aquamarine;
+    background-color: rgb(0, 71, 47);
 }

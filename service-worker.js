@@ -1,22 +1,25 @@
-const cacheName = 'editor-cache-v1';
-const cachedFiles = ['/', 'editor.js', 'style.css', 'manifest.json', 'icon.png'];
-
-self.addEventListener('install', (e) => {
-    e.waitUntil(
-        caches.open(cacheName).then((cache) => {
-            return cache.addAll([
-                '/index.html',
-                '/style.css',
-                '/editor.js',
-              ]);
+// Cache all static resources.
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+      caches.open('my-pwa')
+        .then(function(cache) {
+          cache.addAll([
+            '/',
+            '/index.html',
+            '/style.css',
+            '/editor.js'
+          ]);
         })
     );
-});
-
-self.addEventListener('fetch', (e) => {
-    e.respondWith(
-        caches.match(e.request).then((response) => {
-            return response || fetch(e.request);
+  });
+  
+  // Serve cached resources offline.
+  self.addEventListener('fetch', function(event) {
+    event.respondWith(
+      caches.match(event.request)
+        .then(function(response) {
+          return response || fetch(event.request);
         })
     );
-});
+  });
+  

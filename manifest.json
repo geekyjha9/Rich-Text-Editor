@@ -1,16 +1,21 @@
 {
-  "name": "Rich Text Editor PWA",
-  "short_name": "Editor PWA",
-  "description": "A Progressive Web App for a rich text editor",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#fff",
-  "theme_color": "#333",
+  "name": "Rich Text Editor",
+  "short_name": "RTE",
+  "description": "A progressive web app for creating and editing rich text content.",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "/icons/192x192.png",
       "sizes": "192x192",
       "type": "image/png"
+    },
+    {
+      "src": "/icons/512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
-  ]
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#f0f0f0"
 }
