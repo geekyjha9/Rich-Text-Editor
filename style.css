@@ -5,7 +5,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 3vw;
+    margin-top: 4vw;
 }
 
 .toolbar {
@@ -14,7 +14,7 @@ body {
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 75%;
     overflow: scroll;
 }
 
@@ -26,8 +26,8 @@ body {
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 10px;
-    width: 60%;
-    min-height: 400px;
+    width: 75%;
+    min-height: 60vh;
     margin: 10px;
 }
 
