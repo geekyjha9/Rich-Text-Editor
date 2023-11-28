@@ -41,6 +41,8 @@ class RichTextEditor {
 
     document.getElementById("new-file").addEventListener("click", () => this.newFile());
     document.getElementById("open-file").addEventListener("click", () => this.openFile());
+    document.getElementById("save-file").addEventListener("click", () => this.saveFile());
+    document.getElementById("save-as-file").addEventListener("click", () => this.saveAsFile());
     document.getElementById("recent-file").addEventListener("click", () => this.recentFile());
     document.getElementById("export-file").addEventListener("click", () => this.exportFile());
     document.getElementById("share-file").addEventListener("click", () => this.shareFile());
