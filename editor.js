@@ -35,6 +35,16 @@ class RichTextEditor {
     this.redoButton.addEventListener("click", () => this.redo());
     this.saveButton.addEventListener("click", () => this.save());
     this.editor.addEventListener("input", () => this.updateStack());
+
+    this.fileNameElement = document.getElementById("file-name");
+    this.fileName = "Untitled"; // Initial file name
+
+    document.getElementById("new-file").addEventListener("click", () => this.newFile());
+    document.getElementById("open-file").addEventListener("click", () => this.openFile());
+    document.getElementById("recent-file").addEventListener("click", () => this.recentFile());
+    document.getElementById("export-file").addEventListener("click", () => this.exportFile());
+    document.getElementById("share-file").addEventListener("click", () => this.shareFile());
+    this.editor.addEventListener("input", () => this.updateStack());
   }
 
   execCommand(command) {
@@ -85,6 +95,111 @@ class RichTextEditor {
     const url = URL.createObjectURL(blob);
     this.downloadLink.href = url;
     this.downloadLink.style.display = "block";
+  }
+
+  newFile() {
+    // Clear the editor content for a new file
+    this.editor.innerHTML = '';
+    
+    // Reset the undo and redo stacks
+    this.undoStack = [];
+    this.redoStack = [];
+
+    // Update the stack for the new state
+    this.updateStack();
+
+    // Set the file name to "Untitled"
+    this.setFileName("Untitled");
+  }
+
+  setFileName(name) {
+    this.fileName = name;
+    this.fileNameElement.textContent = this.fileName;
+  }
+
+  openFile() {
+    // Trigger a file input click to open the file dialog
+    this.imageUpload.click();
+  
+    // Listen for the file input change event
+    this.imageUpload.addEventListener("change", (e) => {
+      const files = e.target.files;
+  
+      // Check if there are selected files
+      if (files.length > 0) {
+        const file = files[0];
+        
+        // Check the file type
+        if (file.type === "application/msword" || file.name.endsWith(".doc")) {
+          const reader = new FileReader();
+  
+          // Read the content of the file
+          reader.onload = (event) => {
+            const fileContent = event.target.result;
+  
+            // Set the content of the editor to the file content
+            this.editor.innerHTML = fileContent;
+  
+            // Update the undo stack for the new state
+            this.updateStack();
+  
+            // Set the file name (you can extract it from the file object)
+            this.setFileName(file.name);
+          };
+  
+          // Read the file as text
+          reader.readAsText(file);
+        } else {
+          alert("Please select a valid .doc file.");
+        }
+      }
+    });
+  }
+
+  saveFile() {
+    // Save the current content with the existing file name
+    // For simplicity, you can use the Blob and createObjectURL method
+    const content = this.editor.innerHTML;
+    const blob = new Blob([content], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    this.downloadLink.href = url;
+    this.downloadLink.style.display = "none"; // Hide the download link
+
+    // Update the undo stack for the current state
+    this.updateStack();
+  }
+
+  saveAsFile() {
+    // Show a prompt to get the new file name
+    const newFileName = prompt("Enter a new file name:", "document.html");
+
+    if (newFileName !== null) {
+      // Save the current content with the new file name
+      this.setFileName(newFileName);
+      this.saveFile();
+    }
+  }
+
+  recentFile() {
+    // Simulate displaying a list of recent files in a modal
+    alert("Displaying a list of recent files...\n1. Document1.txt\n2. Document2.txt\n3. Document3.txt");
+  }
+
+  exportFile() {
+    // Trigger the click event on the download link to download the file
+    this.downloadLink.click();
+  }
+
+  shareFile() {
+    // Simulate showing a modal with sharing options
+    const shareModal = document.createElement("div");
+    shareModal.innerHTML = `
+      <h2>Share File</h2>
+      <p>Share the file using the following options:</p>
+      <button onclick="alert('Share via email')">Email</button>
+      <button onclick="alert('Share via link')">Copy Link</button>
+    `;
+    document.body.appendChild(shareModal);
   }
 }
 

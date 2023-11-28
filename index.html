@@ -12,7 +12,28 @@
     <title>Rich Text Editor</title>
   </head>
   <body>
-    <h1>Rich Text Editor</h1>
+    <!-- <h1>Rich Text Editor</h1> -->
+
+    <h3 id="file-name">Untitled</h3>
+
+    <div class="toolbar">
+      <!-- Existing buttons... -->
+      <div class="dropdown">
+        <button class="dropbtn">File</button>
+        <div class="dropdown-content">
+          <a id="new-file">New File</a>
+          <a id="open-file">Open File</a>
+          <a id="save-file">Save</a>
+          <a id="save-as-file">Save As</a>
+          <a id="recent-file">Recent Files</a>
+          <a id="export-file">Export File</a>
+          <a id="share-file">Share File</a>
+        </div>
+      </div>
+      <button class="dropbtn">Formate</button>
+      <button class="dropbtn">help</button>
+      <!-- ... (existing buttons) ... -->
+    </div>
     <div class="toolbar">
       <button id="bold">
         <span class="material-symbols-outlined"> format_bold </span>
@@ -51,11 +72,5 @@
 
 
     <script src="editor.js"></script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js');
-      }
-    </script>
-    
   </body>
 </html>
